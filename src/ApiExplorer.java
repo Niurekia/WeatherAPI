@@ -20,17 +20,18 @@ public class ApiExplorer {
     String dataType = "json";
     String base_date = date.DateNow();
     String base_time = time.TimeNow();
-    String nx = "79";
-    String ny = "123";
+    String nx ;
+    String ny ;
 
     String PTY;
     String RN1;
     String REH;
     String T1H;
 
-    public void ApiExplorer() throws Exception {
+    public void ApiExplorer(String NX,String NY) throws Exception {
 
-
+        this.nx=NX;
+        this.ny=NY;
 
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + serviceKey); /*Service Key*/
@@ -86,7 +87,7 @@ public class ApiExplorer {
             JSONObject item = (JSONObject) parse_item.get(i);
             String category = (String) item.get("category");
             String obsrValue = (String) item.get("obsrValue");
-
+//
             //강수상태
             if (category.equals("PTY")) {
                 PTY=obsrValue;
@@ -106,6 +107,7 @@ public class ApiExplorer {
             else if (category.equals("T1H")) {
                 T1H = obsrValue;
             }
+//
         }
 
 

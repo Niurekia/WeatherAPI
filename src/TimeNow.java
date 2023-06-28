@@ -13,6 +13,9 @@ public class TimeNow{
             hour=0;
         String strHour=hour+"";
         String strMinute=minute+"";
+        if(hour<10)
+            strHour="0"+hour;
+
 
         String strTime=strHour.concat(strMinute);
         return strTime;
